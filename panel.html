@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de leads — Nexumautomatic</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css?v=20260903d">
+<style>
+  .panel-main { max-width: 1100px; margin-inline: auto; padding: clamp(8rem,14vw,10rem) var(--gutter) 6rem; }
+  .panel-main h1 { font-size: clamp(1.8rem,3.6vw,2.4rem); }
+  .panel-sub { color: var(--mute); margin-top: .6rem; }
+  .panel-gate { margin-top: 2.5rem; padding: 2.5rem; text-align: center; }
+  .panel-gate p { color: var(--mute); margin-bottom: 1.4rem; }
+  .panel-gsi { display: flex; justify-content: center; }
+  .panel-error { margin-top: 1.2rem; color: var(--ink); font-size: .9rem; display: none; }
+  .panel-error.is-visible { display: block; }
+  .panel-toolbar { margin-top: 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .panel-who { font-size: .9rem; color: var(--mute); }
+  .panel-signout { font-size: .85rem; color: var(--ink); text-decoration: underline; cursor: pointer; }
+  .panel-table-wrap { margin-top: 1.5rem; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+  table.panel-table { width: 100%; border-collapse: collapse; font-size: .86rem; white-space: nowrap; }
+  .panel-table th, .panel-table td { padding: .7rem .9rem; border-bottom: 1px solid var(--line); text-align: left; }
+  .panel-table th { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); background: var(--bg-2); }
+  .panel-table tr:last-child td { border-bottom: none; }
+  .panel-empty { margin-top: 2rem; text-align: center; color: var(--mute); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<nav class="nav is-scrolled" data-nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">N</span><span>NEXUM AUTOMATIC</span></a>
+    <a class="nav-link" href="index.html">← Volver a la web</a>
+  </div>
+</nav>
+
+<main id="main" class="panel-main">
+  <h1>Panel de leads</h1>
+  <p class="panel-sub">Contactos recibidos por el formulario y la calculadora de la web. Solo lo puedes ver tú.</p>
+
+  <div class="card panel-gate" data-panel-gate>
+    <p>Inicia sesión con la cuenta de Gmail autorizada para ver los leads.</p>
+    <div id="g_id_onload"
+      data-client_id="PEGA_AQUI_TU_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+      data-callback="handleCredentialResponse"
+      data-auto_prompt="false">
+    </div>
+    <div class="panel-gsi g_id_signin" data-type="standard" data-theme="outline" data-size="large" data-text="signin_with" data-shape="pill"></div>
+    <p class="panel-error" data-panel-error></p>
+  </div>
+
+  <div data-panel-content hidden>
+    <div class="panel-toolbar">
+      <span class="panel-who" data-panel-who></span>
+      <span class="panel-signout" data-panel-signout>Cerrar sesión</span>
+    </div>
+    <div class="panel-table-wrap" data-panel-table-wrap hidden>
+      <table class="panel-table">
+        <thead>
+          <tr>
+            <th>Fecha</th><th>Origen</th><th>Nombre</th><th>Empresa</th><th>Email</th>
+            <th>Teléfono</th><th>Sector</th><th>Mensaje / consultas</th><th>Ahorro</th>
+          </tr>
+        </thead>
+        <tbody data-panel-rows></tbody>
+      </table>
+    </div>
+    <p class="panel-empty" data-panel-empty hidden>Todavía no ha llegado ningún lead.</p>
+  </div>
+</main>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script defer src="panel.js?v=20260903a"></script>
+</body>
+</html>

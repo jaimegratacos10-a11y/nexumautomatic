@@ -115,10 +115,29 @@
       form.classList.add("is-sending");
       submitBtn?.classList.add("is-sending");
 
-      await new Promise(r => setTimeout(r, 700 + Math.random() * 500));
+      let ok = false;
+      try {
+        const res = await fetch("lead.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            origen: "contacto",
+            nombre: form.elements.name?.value || "",
+            empresa: form.elements.company?.value || "",
+            email: form.elements.email?.value || "",
+            telefono: form.elements.phone?.value || "",
+            sector: form.elements.sector?.value || "",
+            mensaje: form.elements.task?.value || "",
+          }),
+        });
+        const data = await res.json();
+        ok = !!data.ok;
+      } catch (e) { ok = false; }
 
       const firstName = (form.elements.name?.value || "").trim().split(/\s+/)[0] || "Hola";
-      success.textContent = `${firstName}, hemos recibido tu mensaje. Te escribimos en breve a tu correo.`;
+      success.textContent = ok
+        ? `${firstName}, hemos recibido tu mensaje. Te escribimos en breve a tu correo.`
+        : `${firstName}, no hemos podido enviarlo automáticamente. Escríbenos a nexumautomatic@gmail.com y lo revisamos igualmente.`;
 
       form.classList.remove("is-sending");
       form.classList.add("is-sent");
@@ -295,6 +314,21 @@
         gate.classList.remove("is-visible");
         gate.hidden = true;
         report.hidden = false;
+
+        fetch("lead.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            origen: "calculadora",
+            nombre: $("[data-lead-name]")?.value || "",
+            empresa: $("[data-lead-company]")?.value || "",
+            email: $("[data-lead-email]")?.value || "",
+            telefono: $("[data-lead-phone]")?.value || "",
+            sector,
+            consultas,
+            ahorro: saving,
+          }),
+        }).catch(() => {});
       });
     }
   }

@@ -1,0 +1,13 @@
+# Bloquea el acceso directo a esta carpeta desde el navegador.
+# Los leads solo se leen a través de panel-data.php (con inicio de sesión).
+
+# Apache 2.4+
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+
+# Apache 2.2 (hosts antiguos)
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>
