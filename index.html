@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexumautomatic — Automatización con IA para tu negocio</title>
-<meta name="description" content="Automatizamos Gmail, WhatsApp, reservas y citas con inteligencia artificial para que tu negocio ahorre tiempo y no pierda ni un cliente.">
+<title>Nexumautomatic — Automatización empresarial con Inteligencia Artificial</title>
+<meta name="description" content="Conectamos WhatsApp, email, reservas, CRM y tus herramientas para que las tareas que haces manualmente funcionen automáticamente con IA.">
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap">
 
-<link rel="stylesheet" href="styles.css?v=20260902">
-<noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
+<link rel="stylesheet" href="styles.css?v=20260903b">
+<noscript><style>
+  [data-reveal]{opacity:1!important;transform:none!important;}
+  .faq-a{grid-template-rows:1fr!important;opacity:1!important;}
+</style></noscript>
 </head>
 <body>
 <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -22,16 +25,16 @@
   <div class="nav-inner">
     <a class="brand" href="#top">
       <span class="brand-mark">N</span>
-      <span>NEXUMAUTOMATIC</span>
+      <span>NEXUM AUTOMATIC</span>
     </a>
     <div class="nav-links" data-nav-links>
       <a class="nav-link" href="#servicios">Servicios</a>
-      <a class="nav-link" href="#proceso">Cómo funciona</a>
-      <a class="nav-link" href="#casos">Casos de uso</a>
-      <a class="nav-link" href="#planes">Planes</a>
+      <a class="nav-link" href="#como-funciona">Cómo funciona</a>
+      <a class="nav-link" href="#demo">Demo IA</a>
+      <a class="nav-link" href="#calculadora">Calculadora</a>
       <a class="nav-link" href="#faq">FAQ</a>
     </div>
-    <a class="btn btn-primary nav-cta" href="#contacto">Hablemos</a>
+    <a class="btn btn-primary btn-sm nav-cta" href="#contacto">Solicitar demo</a>
     <button class="nav-burger" data-nav-burger aria-label="Abrir menú" aria-expanded="false">
       <span class="burger-lines"><span></span><span></span><span></span></span>
     </button>
@@ -41,10 +44,11 @@
 <div class="nav-mobile" data-nav-mobile data-open="false">
   <div class="nav-mobile-list" data-nav-mobile-list>
     <a href="#servicios">Servicios</a>
-    <a href="#proceso">Cómo funciona</a>
-    <a href="#casos">Casos de uso</a>
-    <a href="#planes">Planes</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#demo">Demo IA</a>
+    <a href="#calculadora">Calculadora</a>
     <a href="#faq">FAQ</a>
+    <a href="#contacto">Contacto</a>
   </div>
 </div>
 
@@ -52,304 +56,380 @@
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <div class="hero-gradient" aria-hidden="true"></div>
-    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="glow glow-blue" aria-hidden="true"></div>
+    <div class="glow glow-violet" aria-hidden="true"></div>
+    <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="hero-inner">
-      <p class="kicker hero-kicker">Automatización · Inteligencia artificial · 2026</p>
-      <h1 class="hero-title">
-        Deja que la <span class="hl">IA</span> conteste.<br>
-        Tú <span class="hl">cierra</span> el negocio.
-      </h1>
-      <p class="hero-sub">
-        Automatizamos Gmail, WhatsApp, reservas y los procesos repetitivos de tu negocio con
-        inteligencia artificial, para que tu equipo deje de responder lo mismo cien veces al día.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#contacto">Reservar diagnóstico gratuito</a>
-        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      <div>
+        <p class="kicker hero-kicker">Automatización empresarial con IA</p>
+        <h1 class="hero-title">Automatizamos tu empresa con <span class="text-grad">Inteligencia Artificial</span>.</h1>
+        <p class="hero-sub">
+          Conectamos WhatsApp, email, reservas, CRM y tus herramientas para que las tareas que ahora
+          haces manualmente funcionen automáticamente.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#servicios">Descubre qué puedes automatizar</a>
+          <a class="btn btn-outline" href="#contacto">Solicitar una demostración</a>
+        </div>
+        <div class="hero-meta">
+          <span>WhatsApp</span>
+          <span>Email</span>
+          <span>Reservas</span>
+          <span>CRM</span>
+          <span>Calendario</span>
+        </div>
       </div>
-      <div class="hero-meta">
-        <span>→ Gmail</span>
-        <span>→ WhatsApp</span>
-        <span>→ Reservas y citas</span>
-        <span>→ A medida</span>
+
+      <div class="diagram" data-reveal aria-hidden="true">
+        <div class="diagram-node"><span class="diagram-icon">CL</span>Cliente</div>
+        <div class="diagram-connector"></div>
+        <div class="diagram-node"><span class="diagram-icon">IN</span>WhatsApp / Web / Email</div>
+        <div class="diagram-connector"></div>
+        <div class="diagram-node is-emphasis"><span class="diagram-icon">NX</span>Nexumautomatic</div>
+        <div class="diagram-connector"></div>
+        <div class="diagram-node is-emphasis"><span class="diagram-icon">IA</span>Inteligencia artificial</div>
+        <div class="diagram-connector"></div>
+        <div class="diagram-node"><span class="diagram-icon">CR</span>CRM · Calendario · Reservas · Email</div>
       </div>
-    </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <span>SCROLL</span>
-      <span class="hero-scroll-line"></span>
     </div>
   </section>
 
-  <!-- MANIFESTO -->
-  <section class="section manifesto">
+  <!-- PROBLEMA -->
+  <section class="section on-tint" id="problema">
     <div class="section-inner">
-      <p class="kicker">Nuestra idea</p>
-      <blockquote data-reveal>
-        Cada negocio pierde horas cada semana en tareas que no deberían pisar una bandeja
-        de entrada humana. Nosotros ponemos la <em>inteligencia artificial</em> a hacer
-        ese trabajo, para que tu equipo se dedique a lo que de verdad requiere una persona.
-      </blockquote>
-      <p class="manifesto-foot" data-reveal>
-        Nexumautomatic diseña e implementa automatizaciones con IA a medida de cada negocio:
-        desde responder correos y mensajes de WhatsApp hasta gestionar reservas, citas y
-        flujos internos completos.
-      </p>
+      <div class="section-head is-centered">
+        <p class="kicker">El problema</p>
+        <h2>¿Cuántas horas pierde tu empresa cada semana haciendo esto?</h2>
+      </div>
+      <div class="problem-list">
+        <div class="problem-item" data-reveal>Responder las mismas preguntas por WhatsApp</div>
+        <div class="problem-item" data-reveal data-reveal-delay="1">Contestar emails repetitivos</div>
+        <div class="problem-item" data-reveal data-reveal-delay="2">Gestionar reservas manualmente</div>
+        <div class="problem-item" data-reveal data-reveal-delay="3">Introducir clientes en el CRM</div>
+        <div class="problem-item" data-reveal>Recordar citas</div>
+        <div class="problem-item" data-reveal data-reveal-delay="1">Enviar presupuestos</div>
+        <div class="problem-item" data-reveal data-reveal-delay="2">Clasificar solicitudes</div>
+        <div class="problem-item" data-reveal data-reveal-delay="3">Hacer seguimiento de clientes</div>
+        <div class="problem-item" data-reveal data-reveal-delay="4">Copiar información entre programas</div>
+      </div>
+      <p class="problem-close" data-reveal>Si una tarea sigue siempre los mismos pasos, probablemente se puede automatizar.</p>
     </div>
   </section>
 
   <!-- SERVICIOS -->
   <section class="section" id="servicios">
     <div class="section-inner">
-      <div class="section-head">
-        <p class="kicker">Servicios</p>
-        <h2>Automatizamos lo que te quita el día</h2>
-        <p>Cuatro frentes donde la IA elimina el trabajo repetitivo sin perder el trato humano cuando hace falta.</p>
+      <div class="section-head is-centered">
+        <p class="kicker">Qué automatizamos</p>
+        <h2>Sistemas de automatización para cada parte de tu negocio</h2>
       </div>
-
-      <div class="services-list" data-services>
-
-        <div class="service-row" data-service-row>
-          <button class="service-row-head" data-service-toggle aria-expanded="false" aria-controls="service-panel-gmail">
-            <span class="service-num">01</span>
-            <span class="service-title-wrap">
-              <span class="service-name">Automatización de Gmail</span>
-              <span class="service-short">Tu bandeja de entrada, resuelta sola.</span>
-            </span>
-            <span class="service-toggle" aria-hidden="true"></span>
-          </button>
-          <div class="service-panel" id="service-panel-gmail">
-            <div class="service-panel-inner">
-              <div class="service-panel-content">
-                <p class="service-desc">
-                  Conectamos IA a tu correo para leer, clasificar y responder los mensajes repetitivos
-                  al instante: consultas de precio, disponibilidad, dudas frecuentes o seguimiento de
-                  leads. Tú solo entras cuando de verdad hace falta.
-                </p>
-                <ul class="service-bullets">
-                  <li>Respuestas automáticas con el tono de tu marca</li>
-                  <li>Clasificación y etiquetado inteligente de correo entrante</li>
-                  <li>Detección y aviso de leads calientes en tiempo real</li>
-                  <li>Redacción de borradores para que solo revises y envíes</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+      <div class="services-grid">
+        <div class="card service-card" data-reveal>
+          <span class="diagram-icon">WA</span>
+          <h3>WhatsApp con IA</h3>
+          <p>Un asistente puede responder clientes automáticamente, resolver preguntas, solicitar información, captar leads y gestionar reservas.</p>
         </div>
-
-        <div class="service-row" data-service-row>
-          <button class="service-row-head" data-service-toggle aria-expanded="false" aria-controls="service-panel-whatsapp">
-            <span class="service-num">02</span>
-            <span class="service-title-wrap">
-              <span class="service-name">Automatización de WhatsApp</span>
-              <span class="service-short">Un asistente que no cierra nunca.</span>
-            </span>
-            <span class="service-toggle" aria-hidden="true"></span>
-          </button>
-          <div class="service-panel" id="service-panel-whatsapp">
-            <div class="service-panel-inner">
-              <div class="service-panel-content">
-                <p class="service-desc">
-                  Tu WhatsApp Business atendido por IA 24/7: responde preguntas, envía catálogos,
-                  gestiona pedidos y deriva a una persona solo cuando el caso lo requiere. Sin bots
-                  que suenan a bot.
-                </p>
-                <ul class="service-bullets">
-                  <li>Respuestas automáticas naturales, en tu idioma y tono</li>
-                  <li>Gestión de pedidos, catálogo y estados de envío</li>
-                  <li>Derivación a un humano en un clic cuando es necesario</li>
-                  <li>Funciona con WhatsApp Business API</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div class="card service-card" data-reveal data-reveal-delay="1">
+          <span class="diagram-icon">@</span>
+          <h3>Email automático</h3>
+          <p>La IA puede leer emails, clasificarlos, extraer información, preparar respuestas y enviar la información al departamento correspondiente.</p>
         </div>
-
-        <div class="service-row" data-service-row>
-          <button class="service-row-head" data-service-toggle aria-expanded="false" aria-controls="service-panel-reservas">
-            <span class="service-num">03</span>
-            <span class="service-title-wrap">
-              <span class="service-name">Automatización de reservas y citas</span>
-              <span class="service-short">La agenda se organiza sola.</span>
-            </span>
-            <span class="service-toggle" aria-hidden="true"></span>
-          </button>
-          <div class="service-panel" id="service-panel-reservas">
-            <div class="service-panel-inner">
-              <div class="service-panel-content">
-                <p class="service-desc">
-                  Tus clientes reservan, cambian o cancelan citas hablando por WhatsApp, web o teléfono,
-                  y la IA sincroniza todo con tu calendario en tiempo real. Recordatorios automáticos
-                  incluidos, para que no falte nadie.
-                </p>
-                <ul class="service-bullets">
-                  <li>Reserva conversacional por WhatsApp o formulario web</li>
-                  <li>Sincronización con Google Calendar / Calendly y similares</li>
-                  <li>Recordatorios y confirmaciones automáticas</li>
-                  <li>Reprogramaciones y cancelaciones sin intervención manual</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div class="card service-card" data-reveal data-reveal-delay="2">
+          <span class="diagram-icon">RS</span>
+          <h3>Reservas inteligentes</h3>
+          <p>El cliente puede consultar disponibilidad y reservar automáticamente sin llamadas ni mensajes. Integración con Google Calendar y otros calendarios.</p>
         </div>
-
-        <div class="service-row" data-service-row>
-          <button class="service-row-head" data-service-toggle aria-expanded="false" aria-controls="service-panel-medida">
-            <span class="service-num">04</span>
-            <span class="service-title-wrap">
-              <span class="service-name">Automatizaciones a medida</span>
-              <span class="service-short">Si es repetitivo, se puede automatizar.</span>
-            </span>
-            <span class="service-toggle" aria-hidden="true"></span>
-          </button>
-          <div class="service-panel" id="service-panel-medida">
-            <div class="service-panel-inner">
-              <div class="service-panel-content">
-                <p class="service-desc">
-                  Cada negocio tiene sus propios cuellos de botella. Diseñamos flujos con IA para lo
-                  que no encaja en un producto estándar: CRM, facturación, atención en varios canales,
-                  informes automáticos, integraciones entre herramientas.
-                </p>
-                <ul class="service-bullets">
-                  <li>Diagnóstico de procesos y detección de tareas automatizables</li>
-                  <li>Integración entre tus herramientas actuales (CRM, hojas de cálculo, ERP)</li>
-                  <li>Flujos de trabajo con IA generativa donde aporta valor real</li>
-                  <li>Mantenimiento y ajuste continuo tras la puesta en marcha</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div class="card service-card" data-reveal>
+          <span class="diagram-icon">AI</span>
+          <h3>Chatbots inteligentes</h3>
+          <p>Asistentes entrenados con la información de cada empresa, capaces de responder dudas sobre servicios, precios, horarios o procedimientos.</p>
         </div>
+        <div class="card service-card" data-reveal data-reveal-delay="1">
+          <span class="diagram-icon">CR</span>
+          <h3>Automatización del CRM</h3>
+          <p>Cada nuevo contacto puede guardarse automáticamente, clasificarse y recibir seguimiento sin intervención manual.</p>
+        </div>
+        <div class="card service-card" data-reveal data-reveal-delay="2">
+          <span class="diagram-icon">PS</span>
+          <h3>Procesos personalizados</h3>
+          <p>Creamos automatizaciones específicas conectando las herramientas que ya utiliza cada empresa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ASÍ FUNCIONA -->
+  <section class="section on-tint" id="como-funciona">
+    <div class="section-inner">
+      <div class="section-head is-centered">
+        <p class="kicker">Así funciona</p>
+        <h2>Un ejemplo real, de principio a fin</h2>
+        <p>Así gestiona la IA una reserva completa, sin que nadie tenga que intervenir.</p>
+      </div>
+      <div class="chat-mock" data-reveal>
+        <div class="chat-bubble from-client">Hola, ¿tenéis disponibilidad para una limpieza dental esta semana?</div>
+        <div class="chat-step">La IA entiende la solicitud</div>
+        <div class="chat-step">Consulta Google Calendar</div>
+        <div class="chat-step">Encuentra horarios disponibles</div>
+        <div class="chat-bubble from-ai">Tenemos hueco el jueves a las 10:00 o el viernes a las 17:30. ¿Cuál prefieres?</div>
+        <div class="chat-bubble from-client">El viernes a las 17:30, perfecto</div>
+        <div class="chat-step">Reserva la cita</div>
+        <div class="chat-step">Guarda al cliente en el CRM</div>
+        <div class="chat-step">Envía confirmación</div>
+        <div class="chat-step">Envía un recordatorio antes de la cita</div>
+        <p class="chat-final">Todo ocurre automáticamente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORES -->
+  <section class="section" id="sectores">
+    <div class="section-inner">
+      <div class="section-head is-centered">
+        <p class="kicker">Ejemplos por sector</p>
+        <h2>Empresas que ya podrían estar automatizando esto</h2>
+      </div>
+      <div class="sector-grid">
+        <div class="card sector-card" data-reveal>
+          <span class="sector-tag">Clínica dental</span>
+          <h3>Citas sin llamadas</h3>
+          <p>La IA responde preguntas, consulta disponibilidad, reserva citas y envía recordatorios.</p>
+        </div>
+        <div class="card sector-card" data-reveal data-reveal-delay="1">
+          <span class="sector-tag">Inmobiliaria</span>
+          <h3>Interesados cualificados</h3>
+          <p>La IA responde interesados, pregunta qué vivienda buscan, filtra oportunidades y agenda visitas.</p>
+        </div>
+        <div class="card sector-card" data-reveal data-reveal-delay="2">
+          <span class="sector-tag">Restaurante</span>
+          <h3>Reservas al minuto</h3>
+          <p>Gestiona reservas, consultas de horarios, cambios y cancelaciones automáticamente.</p>
+        </div>
+        <div class="card sector-card" data-reveal data-reveal-delay="3">
+          <span class="sector-tag">Taller</span>
+          <h3>Citas con contexto</h3>
+          <p>Recoge información del vehículo, el motivo de la consulta y solicita una cita.</p>
+        </div>
+        <div class="card sector-card" data-reveal>
+          <span class="sector-tag">Empresa de servicios</span>
+          <h3>Presupuestos automáticos</h3>
+          <p>Recibe solicitudes de presupuesto, obtiene los datos necesarios y crea automáticamente una oportunidad comercial.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- PROCESO -->
-  <section class="section" id="proceso">
+  <section class="section on-tint" id="proceso">
     <div class="section-inner">
-      <div class="section-head">
-        <p class="kicker">Cómo funciona</p>
-        <h2>Tres pasos, sin complicarte la vida</h2>
+      <div class="section-head is-centered">
+        <p class="kicker">Cómo trabajamos</p>
+        <h2>De la idea al sistema en marcha</h2>
       </div>
-      <div class="process-grid" data-process>
+      <div class="process-grid">
         <div class="process-item" data-reveal>
-          <div class="process-num">01</div>
-          <h3>Diagnóstico</h3>
-          <p>Analizamos tus procesos actuales y detectamos qué tareas repetitivas te están robando horas cada semana.</p>
+          <div class="process-num text-grad">01</div>
+          <h3>Analizamos tu empresa</h3>
+          <p>Estudiamos qué tareas estás realizando manualmente.</p>
         </div>
         <div class="process-item" data-reveal data-reveal-delay="1">
-          <div class="process-num">02</div>
-          <h3>Automatización</h3>
-          <p>Diseñamos e implementamos los flujos con IA a medida de tu negocio, conectados a las herramientas que ya usas.</p>
+          <div class="process-num text-grad">02</div>
+          <h3>Detectamos oportunidades</h3>
+          <p>Identificamos qué procesos pueden automatizarse.</p>
         </div>
         <div class="process-item" data-reveal data-reveal-delay="2">
-          <div class="process-num">03</div>
-          <h3>Acompañamiento</h3>
-          <p>Medimos resultados, ajustamos el sistema y seguimos disponibles para lo que necesites después del lanzamiento.</p>
+          <div class="process-num text-grad">03</div>
+          <h3>Construimos el sistema</h3>
+          <p>Conectamos las herramientas necesarias y configuramos la inteligencia artificial.</p>
+        </div>
+        <div class="process-item" data-reveal data-reveal-delay="3">
+          <div class="process-num text-grad">04</div>
+          <h3>Tu empresa trabaja sola</h3>
+          <p>El sistema gestiona las tareas repetitivas mientras tu equipo se centra en lo que de verdad necesita personas.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BENEFICIOS -->
-  <section class="section">
+  <!-- IMPACTO -->
+  <section class="section" id="impacto">
     <div class="section-inner">
-      <div class="section-head">
-        <p class="kicker">Por qué automatizar</p>
-        <h2>Menos tareas repetidas, más negocio</h2>
+      <div class="section-head is-centered">
+        <p class="kicker">Ejemplo de resultados potenciales</p>
+        <h2>Lo que la automatización puede significar para tu negocio</h2>
       </div>
-      <div class="benefits-grid" data-benefits>
-        <div class="card benefit-card" data-reveal>
-          <h3>Menos bandeja de entrada</h3>
-          <p>Los correos y mensajes repetitivos dejan de depender de que alguien esté delante de la pantalla.</p>
+      <div class="impact-grid">
+        <div class="card impact-card" data-reveal>
+          <div class="impact-num text-grad">-80%</div>
+          <p>Tiempo respondiendo consultas repetitivas</p>
         </div>
-        <div class="card benefit-card" data-reveal data-reveal-delay="1">
-          <h3>Respuesta inmediata</h3>
-          <p>Tus clientes reciben contestación al momento, a cualquier hora, sin esperar al horario de oficina.</p>
+        <div class="card impact-card" data-reveal data-reveal-delay="1">
+          <div class="impact-num text-grad">24/7</div>
+          <p>Atención automática, sin horarios</p>
         </div>
-        <div class="card benefit-card" data-reveal data-reveal-delay="2">
-          <h3>Tiempo para lo importante</h3>
-          <p>El equipo deja de repetir lo mismo cien veces y se dedica a lo que realmente mueve el negocio.</p>
+        <div class="card impact-card" data-reveal data-reveal-delay="2">
+          <div class="impact-num text-grad">Rápida</div>
+          <p>Respuesta a nuevos clientes</p>
+        </div>
+        <div class="card impact-card" data-reveal data-reveal-delay="3">
+          <div class="impact-num text-grad">Menos</div>
+          <p>Tareas administrativas manuales</p>
+        </div>
+        <div class="card impact-card" data-reveal data-reveal-delay="4">
+          <div class="impact-num text-grad">Menos</div>
+          <p>Oportunidades comerciales perdidas</p>
+        </div>
+      </div>
+      <p class="impact-disclaimer">Estos son ejemplos de resultados potenciales, no datos reales de clientes — todavía no tenemos histórico propio. El resultado real depende de cada negocio y de la automatización implementada.</p>
+    </div>
+  </section>
+
+  <!-- DEMO IA -->
+  <section class="section on-tint" id="demo">
+    <div class="section-inner">
+      <div class="section-head is-centered">
+        <p class="kicker">Demostración interactiva</p>
+        <h2>Pregúntale a nuestro asistente qué puede automatizar en tu empresa</h2>
+        <p>Esta es una demo del tipo de conversación que tus clientes podrían tener con tu propio asistente.</p>
+      </div>
+      <div class="demo-shell" data-reveal>
+        <div class="demo-head">
+          <span class="demo-dot" aria-hidden="true"></span>
+          <span class="demo-title">Asistente Nexumautomatic</span>
+        </div>
+        <div class="demo-body" data-demo-body aria-live="polite"></div>
+        <div class="demo-suggestions" data-demo-suggestions></div>
+        <form class="demo-form" data-demo-form>
+          <input class="demo-input" type="text" data-demo-input placeholder="Escribe tu respuesta…" aria-label="Tu respuesta">
+          <button class="demo-send" type="submit" aria-label="Enviar">→</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA -->
+  <section class="section" id="calculadora">
+    <div class="section-inner">
+      <div class="section-head is-centered">
+        <p class="kicker">Calculadora</p>
+        <h2>Calcula cuánto tiempo podría ahorrar tu empresa</h2>
+      </div>
+      <div class="calc-shell" data-reveal>
+        <div class="card">
+          <div class="calc-field">
+            <label for="calc-sector">Sector de la empresa</label>
+            <select id="calc-sector" data-calc-sector>
+              <option value="Clínica dental">Clínica dental</option>
+              <option value="Clínica estética">Clínica estética</option>
+              <option value="Inmobiliaria">Inmobiliaria</option>
+              <option value="Restaurante">Restaurante</option>
+              <option value="Taller">Taller</option>
+              <option value="Academia">Academia</option>
+              <option value="Despacho profesional">Despacho profesional</option>
+              <option value="Centro médico">Centro médico</option>
+              <option value="Empresa de servicios">Empresa de servicios</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label for="calc-consultas">Consultas recibidas aproximadamente cada semana</label>
+            <input id="calc-consultas" type="number" min="0" step="1" placeholder="Ej. 60" data-calc-consultas>
+          </div>
+          <div class="calc-field">
+            <label for="calc-whatsapp">Horas/semana dedicadas a WhatsApp</label>
+            <input id="calc-whatsapp" type="number" min="0" step="1" placeholder="Ej. 8" data-calc-hours="whatsapp">
+          </div>
+          <div class="calc-field">
+            <label for="calc-email">Horas/semana dedicadas a emails</label>
+            <input id="calc-email" type="number" min="0" step="1" placeholder="Ej. 6" data-calc-hours="email">
+          </div>
+          <div class="calc-field">
+            <label for="calc-reservas">Horas/semana dedicadas a reservas</label>
+            <input id="calc-reservas" type="number" min="0" step="1" placeholder="Ej. 5" data-calc-hours="reservas">
+          </div>
+          <div class="calc-field">
+            <label for="calc-admin">Horas/semana en tareas administrativas repetitivas</label>
+            <input id="calc-admin" type="number" min="0" step="1" placeholder="Ej. 6" data-calc-hours="admin">
+          </div>
+          <button class="btn btn-primary" type="button" data-calc-submit>Calcular ahorro</button>
+        </div>
+
+        <div class="card calc-result">
+          <div data-calc-empty class="calc-locked">Rellena los datos de la izquierda y pulsa «Calcular ahorro» para ver tu estimación.</div>
+
+          <div data-calc-output hidden>
+            <div class="calc-result-row">
+              <span class="calc-result-label">Actualmente</span>
+              <span class="calc-result-value" data-calc-current>—</span>
+            </div>
+            <div class="calc-result-row">
+              <span class="calc-result-label">Con automatización</span>
+              <span class="calc-result-value" data-calc-automated>—</span>
+            </div>
+            <div class="calc-result-row calc-saving">
+              <span class="calc-result-label">Ahorro potencial</span>
+              <span class="calc-result-value" data-calc-saving>—</span>
+            </div>
+            <p class="calc-disclaimer">Estimación orientativa. El ahorro real depende de los procesos y características de cada empresa.</p>
+
+            <form class="calc-gate" data-calc-gate>
+              <p>Deja tus datos para ver el informe completo y que te contactemos con una propuesta a medida.</p>
+              <div class="field"><input type="text" required placeholder=" " data-lead-name><label>Nombre</label></div>
+              <div class="field"><input type="text" required placeholder=" " data-lead-company><label>Empresa</label></div>
+              <div class="field"><input type="email" required placeholder=" " data-lead-email><label>Email</label></div>
+              <div class="field"><input type="tel" placeholder=" " data-lead-phone><label>Teléfono (opcional)</label></div>
+              <button class="btn btn-primary" type="submit">Ver informe completo</button>
+            </form>
+
+            <div data-calc-report hidden>
+              <p class="calc-disclaimer" data-calc-report-text></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CASOS DE USO -->
-  <section class="section" id="casos">
+  <section class="section on-tint" id="casos">
     <div class="section-inner">
-      <div class="section-head">
+      <div class="section-head is-centered">
         <p class="kicker">Casos de uso</p>
-        <h2>Ejemplos de lo que se puede automatizar</h2>
-        <p>Situaciones ilustrativas de cómo se aplica esto en distintos negocios.</p>
+        <h2>Automatizaciones reales, paso a paso</h2>
       </div>
-      <div class="cases-grid" data-cases>
-        <div class="card case-card" data-reveal>
-          <span class="case-tag">Ejemplo · Clínica dental</span>
-          <h3>Confirmación de citas por WhatsApp</h3>
-          <p>Un consultorio automatiza el recordatorio y la confirmación de citas: los pacientes responden por WhatsApp y la agenda se actualiza sola, sin llamadas de por medio.</p>
+      <div class="workflows-grid">
+        <div class="card" data-reveal>
+          <p class="workflow-title">Nuevo mensaje de WhatsApp</p>
+          <div class="workflow-steps">
+            <div class="workflow-step">Nuevo mensaje de WhatsApp</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">IA entiende la consulta</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">Responde</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">Captura datos</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">CRM</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">Seguimiento automático</div>
+          </div>
         </div>
-        <div class="card case-card" data-reveal data-reveal-delay="1">
-          <span class="case-tag">Ejemplo · Tienda online</span>
-          <h3>Atención de pedidos fuera de horario</h3>
-          <p>Una tienda deja que la IA responda dudas sobre pedidos y envíos a cualquier hora, y solo escala a una persona cuando el cliente lo pide explícitamente.</p>
+        <div class="card" data-reveal data-reveal-delay="1">
+          <p class="workflow-title">Nuevo email</p>
+          <div class="workflow-steps">
+            <div class="workflow-step">Nuevo email</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">IA lo analiza</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">Clasifica</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">Extrae datos</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">Actualiza CRM</div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-step">Genera respuesta</div>
+          </div>
         </div>
-        <div class="card case-card" data-reveal data-reveal-delay="2">
-          <span class="case-tag">Ejemplo · Estudio de servicios</span>
-          <h3>Bandeja de entrada bajo control</h3>
-          <p>Un estudio recibe decenas de correos con la misma pregunta cada semana; ahora la IA redacta la respuesta y solo confirma quien la envía.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLANES -->
-  <section class="section" id="planes">
-    <div class="section-inner">
-      <div class="section-head">
-        <p class="kicker">Planes</p>
-        <h2>Un punto de partida para cada tamaño de negocio</h2>
-        <p>Cada proyecto es distinto: te damos un presupuesto cerrado tras el diagnóstico inicial.</p>
-      </div>
-      <div class="plans-grid" data-plans>
-
-        <div class="card plan-card" data-reveal>
-          <div class="plan-name">Starter</div>
-          <p class="plan-tagline">Un canal, resuelto.</p>
-          <ul class="plan-features">
-            <li>Automatización de un canal (Gmail o WhatsApp)</li>
-            <li>Configuración inicial y pruebas incluidas</li>
-            <li>Ajustes durante el primer mes</li>
-          </ul>
-          <a class="btn btn-ghost" href="#contacto">Pedir presupuesto</a>
-        </div>
-
-        <div class="card plan-card is-featured" data-reveal data-reveal-delay="1">
-          <span class="plan-badge">Recomendado</span>
-          <div class="plan-name">Pro</div>
-          <p class="plan-tagline">Gmail, WhatsApp y reservas conectados.</p>
-          <ul class="plan-features">
-            <li>Automatización de Gmail y WhatsApp</li>
-            <li>Gestión de reservas y citas incluida</li>
-            <li>Integración con tu calendario y CRM</li>
-            <li>Soporte prioritario</li>
-          </ul>
-          <a class="btn btn-primary" href="#contacto">Pedir presupuesto</a>
-        </div>
-
-        <div class="card plan-card" data-reveal data-reveal-delay="2">
-          <div class="plan-name">Business</div>
-          <p class="plan-tagline">Automatización a medida, sin límites.</p>
-          <ul class="plan-features">
-            <li>Todo lo de Pro</li>
-            <li>Automatizaciones a medida para tus procesos internos</li>
-            <li>Integraciones múltiples entre herramientas</li>
-            <li>Acompañamiento continuo y prioridad de soporte</li>
-          </ul>
-          <a class="btn btn-ghost" href="#contacto">Hablar con nosotros</a>
-        </div>
-
       </div>
     </div>
   </section>
@@ -357,7 +437,7 @@
   <!-- FAQ -->
   <section class="section" id="faq">
     <div class="section-inner">
-      <div class="section-head">
+      <div class="section-head is-centered">
         <p class="kicker">Preguntas frecuentes</p>
         <h2>Lo que suelen preguntarnos</h2>
       </div>
@@ -365,52 +445,73 @@
 
         <div class="faq-item" data-faq-item data-open="true">
           <button class="faq-q" data-faq-toggle aria-expanded="true" aria-controls="faq-a-0">
-            <span>¿Necesito saber de tecnología para automatizar mi negocio?</span>
+            <span>¿Qué tipo de empresas podéis automatizar?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-a" id="faq-a-0">
-            <div class="faq-a-inner"><p>No. Nos encargamos de todo el proceso técnico: tú solo nos cuentas cómo funciona tu negocio hoy y qué te gustaría dejar de hacer a mano.</p></div>
-          </div>
+          <div class="faq-a" id="faq-a-0"><div class="faq-a-inner"><p>Cualquier negocio que reciba llamadas, emails, mensajes de WhatsApp, solicitudes de presupuesto o reservas de forma repetida: clínicas, inmobiliarias, restaurantes, talleres, academias, despachos y empresas de servicios, entre otros.</p></div></div>
         </div>
-
         <div class="faq-item" data-faq-item>
           <button class="faq-q" data-faq-toggle aria-expanded="false" aria-controls="faq-a-1">
-            <span>¿Cuánto se tarda en tener la automatización funcionando?</span>
+            <span>¿Tengo que cambiar los programas que utilizo actualmente?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-a" id="faq-a-1">
-            <div class="faq-a-inner"><p>Depende del alcance, pero la mayoría de automatizaciones de un solo canal (Gmail o WhatsApp) están listas en cuestión de días tras el diagnóstico inicial.</p></div>
-          </div>
+          <div class="faq-a" id="faq-a-1"><div class="faq-a-inner"><p>No. Conectamos la automatización a las herramientas que ya usas siempre que sea posible, en lugar de pedirte que cambies de sistema.</p></div></div>
         </div>
-
         <div class="faq-item" data-faq-item>
           <button class="faq-q" data-faq-toggle aria-expanded="false" aria-controls="faq-a-2">
-            <span>¿Qué pasa con mis datos y los de mis clientes?</span>
+            <span>¿Podéis conectaros con mi CRM?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-a" id="faq-a-2">
-            <div class="faq-a-inner"><p>Los flujos se configuran para trabajar únicamente con la información necesaria para cada tarea, y puedes pedir en cualquier momento un informe de qué datos se procesan y cómo.</p></div>
-          </div>
+          <div class="faq-a" id="faq-a-2"><div class="faq-a-inner"><p>En la mayoría de los casos sí. Analizamos tu CRM durante el diagnóstico inicial para confirmar la integración exacta.</p></div></div>
         </div>
-
         <div class="faq-item" data-faq-item>
           <button class="faq-q" data-faq-toggle aria-expanded="false" aria-controls="faq-a-3">
-            <span>¿Puedo seguir interviniendo cuando quiera?</span>
+            <span>¿Se puede automatizar WhatsApp?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-a" id="faq-a-3">
-            <div class="faq-a-inner"><p>Sí. Cada automatización incluye un punto claro de derivación a una persona: la IA resuelve lo repetitivo, tú decides cuándo entrar en lo demás.</p></div>
-          </div>
+          <div class="faq-a" id="faq-a-3"><div class="faq-a-inner"><p>Sí, a través de WhatsApp Business API: respuestas automáticas, gestión de reservas, captación de leads y derivación a una persona cuando hace falta.</p></div></div>
         </div>
-
         <div class="faq-item" data-faq-item>
           <button class="faq-q" data-faq-toggle aria-expanded="false" aria-controls="faq-a-4">
-            <span>¿Solo trabajáis con Gmail y WhatsApp?</span>
+            <span>¿La inteligencia artificial puede cometer errores?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-a" id="faq-a-4">
-            <div class="faq-a-inner"><p>Son los dos canales más habituales, pero también automatizamos reservas, CRMs, hojas de cálculo y prácticamente cualquier proceso repetitivo que pueda describirse como una serie de pasos.</p></div>
-          </div>
+          <div class="faq-a" id="faq-a-4"><div class="faq-a-inner"><p>Como cualquier sistema, puede equivocarse en casos límite. Por eso cada automatización incluye un punto claro de derivación a una persona para los casos que lo requieran.</p></div></div>
+        </div>
+        <div class="faq-item" data-faq-item>
+          <button class="faq-q" data-faq-toggle aria-expanded="false" aria-controls="faq-a-5">
+            <span>¿Cuánto cuesta una automatización?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="faq-a-5"><div class="faq-a-inner"><p>Depende del alcance y de las herramientas a conectar. Tras el diagnóstico inicial te damos un presupuesto cerrado, sin sorpresas.</p></div></div>
+        </div>
+        <div class="faq-item" data-faq-item>
+          <button class="faq-q" data-faq-toggle aria-expanded="false" aria-controls="faq-a-6">
+            <span>¿Cuánto tarda en implementarse?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="faq-a-6"><div class="faq-a-inner"><p>Una automatización de un solo canal suele estar lista en cuestión de días. Los proyectos con varias integraciones llevan algo más, según su complejidad.</p></div></div>
+        </div>
+        <div class="faq-item" data-faq-item>
+          <button class="faq-q" data-faq-toggle aria-expanded="false" aria-controls="faq-a-7">
+            <span>¿Qué pasa si necesito modificar la automatización más adelante?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="faq-a-7"><div class="faq-a-inner"><p>Los sistemas se ajustan cuando lo necesites: cambios de horarios, nuevos servicios o procesos adicionales se incorporan sin rehacer todo desde cero.</p></div></div>
+        </div>
+        <div class="faq-item" data-faq-item>
+          <button class="faq-q" data-faq-toggle aria-expanded="false" aria-controls="faq-a-8">
+            <span>¿Mis datos están protegidos?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="faq-a-8"><div class="faq-a-inner"><p>Los flujos se configuran para tratar únicamente la información necesaria para cada tarea. Puedes pedir en cualquier momento un detalle de qué datos se procesan y cómo.</p></div></div>
+        </div>
+        <div class="faq-item" data-faq-item>
+          <button class="faq-q" data-faq-toggle aria-expanded="false" aria-controls="faq-a-9">
+            <span>¿Puedo empezar automatizando solo una parte de mi empresa?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="faq-a-9"><div class="faq-a-inner"><p>Sí, es lo más habitual: empezar por un canal (por ejemplo WhatsApp) y añadir más automatizaciones según los resultados.</p></div></div>
         </div>
 
       </div>
@@ -419,38 +520,55 @@
 
   <!-- CONTACTO -->
   <section class="section contact-section" id="contacto">
-    <div class="contact-halo" aria-hidden="true"></div>
+    <div class="glow glow-cyan" aria-hidden="true" style="width:480px;height:480px;bottom:-200px;left:50%;transform:translateX(-50%);"></div>
     <div class="section-inner">
-      <p class="kicker">Contacto</p>
-      <a class="contact-email" data-contact-email href="mailto:hola@nexumautomatic.com">hola@nexumautomatic.com</a>
-      <p class="contact-sub">
-        Cuéntanos qué te gustaría automatizar y te preparamos un diagnóstico gratuito
-        sin compromiso.
-      </p>
-      <div class="contact-channels">
-        <a class="btn btn-primary" data-contact-whatsapp href="https://wa.me/34600000000" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
-        <a class="btn btn-ghost" href="mailto:hola@nexumautomatic.com">Enviar un correo</a>
-      </div>
+      <div class="contact-grid">
+        <div>
+          <p class="kicker">Contacto</p>
+          <h2>Descubre qué podría automatizarse en tu empresa.</h2>
+          <p class="section-head p" style="color:var(--mute);margin-top:1.1rem;max-width:34rem;">
+            Cuéntanos cómo funciona actualmente tu negocio y analizaremos qué procesos podrían
+            automatizarse mediante inteligencia artificial.
+          </p>
+          <a class="contact-email" data-contact-email href="mailto:nexumautomatic@gmail.com">nexumautomatic@gmail.com</a>
+        </div>
 
-      <form class="contact-form" data-contact-form novalidate>
-        <div class="field">
-          <input type="text" id="name" name="name" required placeholder=" ">
-          <label for="name">Nombre</label>
-        </div>
-        <div class="field">
-          <input type="email" id="email" name="email" required placeholder=" ">
-          <label for="email">Email</label>
-        </div>
-        <div class="field">
-          <textarea id="message" name="message" required placeholder=" "></textarea>
-          <label for="message">¿Qué te gustaría automatizar?</label>
-        </div>
-        <button type="submit" class="btn btn-primary contact-submit" data-contact-submit>
-          <span class="btn-label">Enviar mensaje</span>
-          <span class="btn-spinner" aria-hidden="true"></span>
-        </button>
-        <p class="contact-success" data-contact-success aria-live="polite"></p>
-      </form>
+        <form class="contact-form" data-contact-form novalidate>
+          <div class="form-row is-two">
+            <div class="field"><input type="text" id="c-name" name="name" required placeholder=" "><label for="c-name">Nombre</label></div>
+            <div class="field"><input type="text" id="c-company" name="company" required placeholder=" "><label for="c-company">Empresa</label></div>
+          </div>
+          <div class="form-row is-two">
+            <div class="field"><input type="email" id="c-email" name="email" required placeholder=" "><label for="c-email">Email</label></div>
+            <div class="field"><input type="tel" id="c-phone" name="phone" placeholder=" "><label for="c-phone">Teléfono</label></div>
+          </div>
+          <div class="field">
+            <span class="field-select-label">Sector</span>
+            <select id="c-sector" name="sector" required>
+              <option value="" disabled selected>Selecciona tu sector</option>
+              <option>Clínica dental</option>
+              <option>Clínica estética</option>
+              <option>Inmobiliaria</option>
+              <option>Restaurante</option>
+              <option>Taller</option>
+              <option>Academia</option>
+              <option>Despacho profesional</option>
+              <option>Centro médico</option>
+              <option>Empresa de servicios</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="field">
+            <textarea id="c-task" name="task" required placeholder=" "></textarea>
+            <label for="c-task">¿Qué tarea te gustaría automatizar?</label>
+          </div>
+          <button type="submit" class="btn btn-primary contact-submit" data-contact-submit>
+            <span class="btn-label">Analizar mi empresa</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+          <p class="contact-success" data-contact-success aria-live="polite"></p>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -458,20 +576,40 @@
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-links" data-footer-links>
-      <a href="#servicios">Servicios</a>
-      <a href="#proceso">Cómo funciona</a>
-      <a href="#planes">Planes</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contacto">Contacto</a>
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="brand"><span class="brand-mark">N</span><span>NEXUM AUTOMATIC</span></div>
+        <p class="footer-brand-tagline">Automatización empresarial con Inteligencia Artificial.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <a href="#servicios">Automatización WhatsApp</a>
+        <a href="#servicios">Automatización Email</a>
+        <a href="#servicios">Chatbots IA</a>
+        <a href="#servicios">Reservas automáticas</a>
+        <a href="#servicios">Automatización CRM</a>
+        <a href="#servicios">Integraciones</a>
+        <a href="#servicios">Soluciones IA personalizadas</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="mailto:nexumautomatic@gmail.com">nexumautomatic@gmail.com</a>
+      </div>
     </div>
-    <p class="footer-meta">© 2026 Nexumautomatic. Automatización con IA.</p>
+    <div class="footer-bottom">
+      <span>© 2026 Nexumautomatic. Todos los derechos reservados.</span>
+      <div class="footer-legal">
+        <a href="privacidad.html">Política de privacidad</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
   </div>
 </footer>
 
 <script defer src="lib/gsap.min.js"></script>
 <script defer src="lib/ScrollTrigger.min.js"></script>
 <script defer src="lib/manifest.js"></script>
-<script defer src="main.js?v=20260902"></script>
+<script defer src="main.js?v=20260903b"></script>
 </body>
 </html>
