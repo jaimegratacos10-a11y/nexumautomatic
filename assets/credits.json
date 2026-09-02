@@ -1,0 +1,57 @@
+{
+  "sector-dental": {
+    "src": "assets/img/sector-dental.webp",
+    "title": "KINO Architects - Pony Pediatric Dental Clinic (Photography by Keisuke Miyamoto)",
+    "creator": "準建築人手札網站 Forgemind ArchiMedia",
+    "creator_url": "https://www.flickr.com/photos/44343967@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/44343967@N00/11509137833",
+    "source": "flickr"
+  },
+  "sector-inmobiliaria": {
+    "src": "assets/img/sector-inmobiliaria.webp",
+    "title": "Villa, Klampenborg — architect: Lars Gitz",
+    "creator": "seier+seier",
+    "creator_url": "https://www.flickr.com/photos/94852245@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/94852245@N00/2693882514",
+    "source": "flickr"
+  },
+  "sector-restaurante": {
+    "src": "assets/img/sector-restaurante.webp",
+    "title": "Cozy cafe interior with wooden chairs and tables",
+    "creator": "Nilo Velez",
+    "creator_url": "https://www.nilovelez.com",
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://wordpress.org/photos/photo/78067a4728/",
+    "source": "wordpress"
+  },
+  "sector-taller": {
+    "src": "assets/img/sector-taller.webp",
+    "title": "Beetle Buggy",
+    "creator": "Ryan McGuire",
+    "creator_url": "https://www.gratisography.com",
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://stocksnap.io/photo/beetle-buggy-A0737DFF83",
+    "source": "stocksnap"
+  },
+  "sector-servicios": {
+    "src": "assets/img/sector-servicios.webp",
+    "title": "Startup business people working on laptop",
+    "creator": "Rawpixel Ltd",
+    "creator_url": "https://www.flickr.com/photos/147875007@N03",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/147875007@N03/26666483447",
+    "source": "flickr"
+  }
+}

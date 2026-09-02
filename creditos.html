@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de cookies — Nexumautomatic</title>
+<title>Créditos fotográficos — Nexumautomatic</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,12 +13,14 @@
 <style>
   .legal-main { max-width: 760px; margin-inline: auto; padding: clamp(8rem,14vw,10rem) var(--gutter) 6rem; }
   .legal-main h1 { font-size: clamp(2rem,4vw,2.8rem); margin-bottom: 1.5rem; }
-  .legal-main h2 { font-size: 1.3rem; margin-top: 2.2rem; margin-bottom: .8rem; }
-  .legal-main p, .legal-main li { color: var(--ink-soft); font-size: .98rem; line-height: 1.7; }
-  .legal-notice {
-    margin-bottom: 2rem; padding: 1rem 1.2rem; border-radius: var(--radius-sm);
-    border: 1px dashed var(--line-2); color: var(--mute); font-size: .88rem;
+  .legal-main p { color: var(--ink-soft); font-size: .98rem; line-height: 1.7; }
+  .credits-list { list-style: none; padding: 0; margin-top: 2rem; display: grid; gap: 1rem; }
+  .credits-list li {
+    padding: 1rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--line);
+    background: var(--bg-card); color: var(--mute); font-size: .9rem; line-height: 1.6;
   }
+  .credits-list strong { color: var(--ink); }
+  .credits-list a { color: var(--accent-3); }
 </style>
 </head>
 <body>
@@ -30,14 +32,11 @@
   </div>
 </nav>
 <main id="main" class="legal-main">
-  <p class="legal-notice">Texto de ejemplo. Esta web, tal y como está publicada ahora, no instala cookies propias de analítica o publicidad — solo usa las fuentes de Google Fonts y el almacenamiento estrictamente necesario del navegador. Actualiza este texto en cuanto añadas analítica, píxeles o cookies de terceros.</p>
-  <h1>Política de cookies</h1>
-  <h2>¿Qué son las cookies?</h2>
-  <p>Las cookies son pequeños archivos que un sitio web guarda en tu navegador para recordar información entre visitas.</p>
-  <h2>Cookies que usa esta web</h2>
-  <p>En su versión actual, Nexumautomatic no utiliza cookies de analítica ni publicidad. Únicamente se realizan peticiones a Google Fonts para cargar la tipografía de la web.</p>
-  <h2>Cambios futuros</h2>
-  <p>Si en el futuro se incorpora analítica, un chat en vivo o publicidad, esta página se actualizará para detallar qué cookies se usan, su finalidad y cómo desactivarlas.</p>
+  <h1>Créditos fotográficos</h1>
+  <p>Las fotografías de esta web proceden de <a href="https://openverse.org" target="_blank" rel="noopener">Openverse</a>, el buscador de imágenes con licencia Creative Commons de la Wikimedia Foundation. A continuación se detalla la autoría y licencia de cada una.</p>
+  <ul class="credits-list" data-credits>
+    <li>Cargando créditos…</li>
+  </ul>
 </main>
 <footer class="footer">
   <div class="footer-inner">
@@ -47,10 +46,10 @@
         <a href="privacidad.html">Política de privacidad</a>
         <a href="aviso-legal.html">Aviso legal</a>
         <a href="cookies.html">Cookies</a>
-        <a href="creditos.html">Créditos fotográficos</a>
       </div>
     </div>
   </div>
 </footer>
+<script defer src="lib/credits-render.js"></script>
 </body>
 </html>
