@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap">
 
-<link rel="stylesheet" href="styles.css?v=20260903d">
+<link rel="stylesheet" href="styles.css?v=20260904a">
 <noscript><style>
   [data-reveal]{opacity:1!important;transform:none!important;}
   .faq-a{grid-template-rows:1fr!important;opacity:1!important;}
@@ -159,25 +159,94 @@
   </section>
 
   <!-- ASÍ FUNCIONA -->
-  <section class="section on-tint" id="como-funciona">
+  <section class="section howworks on-tint" id="como-funciona">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="section-inner">
-      <div class="section-head is-centered">
-        <p class="kicker">Así funciona</p>
-        <h2>Un ejemplo real, de principio a fin</h2>
-        <p>Así gestiona la IA una reserva completa, sin que nadie tenga que intervenir.</p>
-      </div>
-      <div class="chat-mock" data-reveal>
-        <div class="chat-bubble from-client">Hola, ¿tenéis disponibilidad para una limpieza dental esta semana?</div>
-        <div class="chat-step">La IA entiende la solicitud</div>
-        <div class="chat-step">Consulta Google Calendar</div>
-        <div class="chat-step">Encuentra horarios disponibles</div>
-        <div class="chat-bubble from-ai">Tenemos hueco el jueves a las 10:00 o el viernes a las 17:30. ¿Cuál prefieres?</div>
-        <div class="chat-bubble from-client">El viernes a las 17:30, perfecto</div>
-        <div class="chat-step">Reserva la cita</div>
-        <div class="chat-step">Guarda al cliente en el CRM</div>
-        <div class="chat-step">Envía confirmación</div>
-        <div class="chat-step">Envía un recordatorio antes de la cita</div>
-        <p class="chat-final">Todo ocurre automáticamente.</p>
+      <div class="howworks-pin" data-hw-pin>
+        <div class="howworks-left">
+          <p class="kicker">Así funciona</p>
+          <h2 class="howworks-title">De un email a una solución, sin que hagas nada.</h2>
+          <p class="howworks-sub">La Inteligencia Artificial de Nexumautomatic entiende, procesa y responde por ti. Tú te enfocas en lo importante, nosotros hacemos el resto.</p>
+
+          <div class="howworks-steps" data-hw-steps>
+            <div class="howworks-line" aria-hidden="true"><span class="howworks-line-fill" data-hw-line></span></div>
+            <div class="howworks-step is-active" data-hw-step="0" data-reveal>
+              <span class="howworks-dot" aria-hidden="true"></span>
+              <div>
+                <h3>El cliente escribe</h3>
+                <p>Tu cliente te envía un email con una consulta o solicitud.</p>
+              </div>
+            </div>
+            <div class="howworks-step" data-hw-step="1" data-reveal data-reveal-delay="1">
+              <span class="howworks-dot" aria-hidden="true"></span>
+              <div>
+                <h3>La IA trabaja</h3>
+                <p>Nexumautomatic entiende la consulta, procesa la información y prepara la respuesta.</p>
+              </div>
+            </div>
+            <div class="howworks-step" data-hw-step="2" data-reveal data-reveal-delay="2">
+              <span class="howworks-dot" aria-hidden="true"></span>
+              <div>
+                <h3>La respuesta llega</h3>
+                <p>El cliente recibe una respuesta rápida, profesional y 100% automatizada.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="howworks-scene" data-hw-scene aria-hidden="true">
+          <div class="hw-card hw-email" data-hw-email-in>
+            <div class="hw-email-head">
+              <span>Nuevo mensaje</span>
+              <span class="hw-email-x">×</span>
+            </div>
+            <div class="hw-email-field"><span>Para</span>info@nexumautomatic.com</div>
+            <div class="hw-email-field"><span>Asunto</span>Información sobre vuestros servicios</div>
+            <div class="hw-email-body">
+              Hola,<br><br>
+              Quería más información sobre vuestros servicios y disponibilidad para esta semana.<br><br>
+              Gracias,<br>Carlos López
+            </div>
+            <div class="hw-email-foot">
+              <span class="hw-email-send" data-hw-send-btn>Enviar</span>
+            </div>
+          </div>
+          <span class="hw-envelope" data-hw-envelope aria-hidden="true">✉</span>
+          <span class="hw-badge hw-badge-client" data-hw-badge-client><span class="hw-badge-icon">◐</span>Cliente</span>
+
+          <div class="hw-card hw-ai" data-hw-ai>
+            <div class="hw-ai-head"><span class="hw-ai-tag">02</span>IA Nexumautomatic</div>
+            <div class="hw-ai-body">
+              <div class="hw-ai-core" data-hw-core>
+                <span class="hw-ai-ring"></span>
+                <span class="hw-ai-ring hw-ai-ring-2"></span>
+                <span class="hw-ai-mark">N</span>
+              </div>
+              <ul class="hw-ai-checklist" data-hw-checklist>
+                <li data-hw-check>Entiende la consulta</li>
+                <li data-hw-check>Extrae información clave</li>
+                <li data-hw-check>Consulta disponibilidad</li>
+                <li data-hw-check>Prepara la respuesta</li>
+                <li data-hw-check>Actualiza el CRM</li>
+                <li data-hw-check>Programa seguimiento</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="hw-card hw-email hw-email-out" data-hw-email-out>
+            <div class="hw-email-field"><span>De</span>nexumautomatic@gmail.com</div>
+            <div class="hw-email-field"><span>Para</span>carlos.lopez@gmail.com</div>
+            <div class="hw-email-field"><span>Asunto</span>Información sobre nuestros servicios</div>
+            <div class="hw-email-body">
+              Hola Carlos,<br><br>
+              Gracias por tu mensaje. Te paso toda la información que necesitas sobre nuestros servicios y disponibilidad para esta semana.<br><br>
+              Quedamos a tu disposición para cualquier duda.<br><br>
+              Un saludo,<br>Equipo Nexumautomatic
+            </div>
+          </div>
+          <span class="hw-badge hw-badge-done" data-hw-badge-done><span class="hw-badge-icon">✓</span>Cliente</span>
+          <span class="hw-notif" data-hw-notif aria-hidden="true">✉<b>1</b></span>
+        </div>
       </div>
     </div>
   </section>
@@ -616,6 +685,6 @@
 <script defer src="lib/gsap.min.js"></script>
 <script defer src="lib/ScrollTrigger.min.js"></script>
 <script defer src="lib/manifest.js"></script>
-<script defer src="main.js?v=20260903b"></script>
+<script defer src="main.js?v=20260904a"></script>
 </body>
 </html>
