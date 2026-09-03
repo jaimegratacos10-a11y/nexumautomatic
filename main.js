@@ -370,12 +370,12 @@
     const badgeDone = $("[data-hw-badge-done]", scene);
     const notif = $("[data-hw-notif]", scene);
 
-    gsap.set(emailIn, { rotateX: 4, rotateY: -3, transformPerspective: 1200 });
-    gsap.set(aiCard, { y: 24, scale: .95 });
-    gsap.set(emailOut, { y: 46, scale: .94, rotateX: 6, transformPerspective: 1200 });
-    gsap.set(badgeDone, { y: 18, opacity: 0 });
-    gsap.set(notif, { scale: .5, opacity: 0 });
-    gsap.set(envelope, { opacity: 0, xPercent: -50, yPercent: -50 });
+    gsap.set(emailIn, { rotateX: 7, rotateY: -6, transformPerspective: 1400 });
+    gsap.set(aiCard, { y: 50, scale: .88 });
+    gsap.set(emailOut, { y: 80, scale: .86, rotateX: 10, transformPerspective: 1400 });
+    gsap.set(badgeDone, { y: 26, opacity: 0 });
+    gsap.set(notif, { scale: .4, opacity: 0 });
+    gsap.set(envelope, { opacity: 0, xPercent: -50, yPercent: -50, scale: .7 });
 
     // Progreso 0-100 (aprox. % de scroll dentro de la sección — ver el "call"
     // final que fuerza la duración total del timeline a exactamente 100).
@@ -398,26 +398,28 @@
         start: "top top",
         end: "bottom bottom",
         scrub: 0.6,
+        pin: pinEl,
+        anticipatePin: 1,
         onUpdate: self => onProgress(self.progress),
       },
     });
 
     // --- 15 -> 30: el email se envía y sale de la escena ---
-    tl.set(envelope, { opacity: 1, top: "22%" }, 15)
-      .to(envelope, { top: "50%", duration: 15 }, 15)
-      .to(emailIn, { y: -50, scale: .9, opacity: 0, rotateX: 10, duration: 15 }, 15)
-      .to(badgeClient, { opacity: 0, y: -16, duration: 8 }, 15)
-      .to(envelope, { opacity: 0, duration: 5 }, 30)
+    tl.set(envelope, { opacity: 1, top: "18%", scale: .7 }, 15)
+      .to(envelope, { top: "50%", scale: 1.15, duration: 15 }, 15)
+      .to(emailIn, { y: -90, scale: .82, opacity: 0, rotateX: 16, duration: 15 }, 15)
+      .to(badgeClient, { opacity: 0, y: -26, duration: 8 }, 15)
+      .to(envelope, { opacity: 0, scale: .6, duration: 5 }, 30)
       // --- 30 -> 60: la IA entra y procesa ---
       .to(aiCard, { opacity: 1, y: 0, scale: 1, duration: 8 }, 32)
-      .to(aiCore, { rotate: 10, duration: 28 }, 32)
+      .to(aiCore, { rotate: 14, duration: 28 }, 32)
       // --- 60 -> 68: la IA termina y envía la respuesta ---
-      .to(aiCard, { opacity: 0, y: -20, scale: .95, duration: 8 }, 60)
-      .set(envelope, { opacity: 1, top: "58%" }, 60)
-      .to(envelope, { top: "84%", duration: 8 }, 60)
-      .to(envelope, { opacity: 0, duration: 4 }, 66)
+      .to(aiCard, { opacity: 0, y: -36, scale: .9, duration: 8 }, 60)
+      .set(envelope, { opacity: 1, top: "56%", scale: .7 }, 60)
+      .to(envelope, { top: "86%", scale: 1.15, duration: 8 }, 60)
+      .to(envelope, { opacity: 0, scale: .6, duration: 4 }, 66)
       // --- 68 -> 100: la respuesta llega ---
-      .to(emailOut, { opacity: 1, y: 0, scale: 1, rotateX: -3, duration: 12 }, 68)
+      .to(emailOut, { opacity: 1, y: 0, scale: 1, rotateX: -5, duration: 12 }, 68)
       .to(badgeDone, { opacity: 1, y: 0, duration: 8 }, 74)
       .to(notif, { opacity: 1, scale: 1, duration: 6 }, 80)
       .to({}, { duration: 0 }, 100); // fija la duración total del timeline en 100
