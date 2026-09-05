@@ -363,32 +363,48 @@
     const sendBtn = $("[data-hw-send-btn]", scene);
     const envelope = $("[data-hw-envelope]", scene);
     const badgeClient = $("[data-hw-badge-client]", scene);
-    const aiCard = $("[data-hw-ai]", scene);
-    const aiCore = $("[data-hw-core]", scene);
-    const checks = $$("[data-hw-check]", scene);
+    const chip = $("[data-hw-chip]", scene);
+    const procs = $$("[data-hw-proc]", scene);
+    const links = $$("[data-hw-link]", scene);
     const emailOut = $("[data-hw-email-out]", scene);
     const badgeDone = $("[data-hw-badge-done]", scene);
     const notif = $("[data-hw-notif]", scene);
 
     gsap.set(emailIn, { rotateX: 7, rotateY: -6, transformPerspective: 1400 });
-    gsap.set(aiCard, { y: 50, scale: .88 });
     gsap.set(emailOut, { y: 80, scale: .86, rotateX: 10, transformPerspective: 1400 });
     gsap.set(badgeDone, { y: 26, opacity: 0 });
     gsap.set(notif, { scale: .4, opacity: 0 });
     gsap.set(envelope, { opacity: 0, xPercent: -50, yPercent: -50, scale: .7 });
+    gsap.set(chip, { opacity: 0, scale: .6 });
+
+    // Las 4 tarjetas de proceso "nacen" del chip: medimos su posición final ya
+    // maquetada por CSS y las colocamos encima del chip con un offset inverso,
+    // para poder animarlas de vuelta a x:0,y:0 (su sitio real) con scroll.
+    const chipRect = chip.getBoundingClientRect();
+    const chipCenter = { x: chipRect.left + chipRect.width / 2, y: chipRect.top + chipRect.height / 2 };
+    const procOffsets = procs.map((el) => {
+      const r = el.getBoundingClientRect();
+      const center = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+      return { x: chipCenter.x - center.x, y: chipCenter.y - center.y };
+    });
+    procs.forEach((el, i) => {
+      gsap.set(el, { x: procOffsets[i].x, y: procOffsets[i].y, scale: .2, opacity: 0 });
+    });
+
+    const linkLengths = links.map((path) => {
+      const len = path.getTotalLength();
+      path.style.strokeDasharray = len;
+      path.style.strokeDashoffset = len;
+      return len;
+    });
 
     // Progreso 0-100 (aprox. % de scroll dentro de la sección — ver el "call"
     // final que fuerza la duración total del timeline a exactamente 100).
-    const checkStart = 36, checkEnd = 58;
-    const checkStep = checks.length > 1 ? (checkEnd - checkStart) / (checks.length - 1) : 0;
-
     function onProgress(p) {
       const t = p * 100;
-      setActiveStep(p < 0.34 ? 0 : p < 0.67 ? 1 : 2);
+      setActiveStep(p < 0.32 ? 0 : p < 0.72 ? 1 : 2);
       if (lineFill) lineFill.style.transform = "scaleY(" + p + ")";
       if (sendBtn) sendBtn.classList.toggle("is-sent", t >= 14 && t < 22);
-      const checkedCount = t < checkStart ? 0 : t >= checkEnd ? checks.length : Math.floor((t - checkStart) / checkStep) + 1;
-      checks.forEach((li, i) => li.classList.toggle("is-checked", i < checkedCount));
     }
 
     const tl = gsap.timeline({
@@ -404,27 +420,64 @@
       },
     });
 
-    // --- 15 -> 30: el email se envía y sale de la escena ---
+    // --- 15 -> 30: el mensaje sale del dispositivo y viaja hacia la IA ---
     tl.set(envelope, { opacity: 1, top: "18%", scale: .7 }, 15)
       .to(envelope, { top: "50%", scale: 1.15, duration: 15 }, 15)
       .to(emailIn, { y: -90, scale: .82, opacity: 0, rotateX: 16, duration: 15 }, 15)
       .to(badgeClient, { opacity: 0, y: -26, duration: 8 }, 15)
       .to(envelope, { opacity: 0, scale: .6, duration: 5 }, 30)
-      // --- 30 -> 60: la IA entra y procesa ---
-      .to(aiCard, { opacity: 1, y: 0, scale: 1, duration: 8 }, 32)
-      .to(aiCore, { rotate: 14, duration: 28 }, 32)
-      // --- 60 -> 68: la IA termina y envía la respuesta ---
-      .to(aiCard, { opacity: 0, y: -36, scale: .9, duration: 8 }, 60)
-      .set(envelope, { opacity: 1, top: "56%", scale: .7 }, 60)
-      .to(envelope, { top: "86%", scale: 1.15, duration: 8 }, 60)
-      .to(envelope, { opacity: 0, scale: .6, duration: 4 }, 66)
-      // --- 68 -> 100: la respuesta llega ---
-      .to(emailOut, { opacity: 1, y: 0, scale: 1, rotateX: -5, duration: 12 }, 68)
-      .to(badgeDone, { opacity: 1, y: 0, duration: 8 }, 74)
-      .to(notif, { opacity: 1, scale: 1, duration: 6 }, 80)
+      // --- 34 -> 40: el nucleo IA se activa ---
+      .to(chip, { opacity: 1, scale: 1.08, duration: 4 }, 34)
+      .to(chip, { scale: 1, duration: 4 }, 38)
+      // --- 40 -> 62: de el nacen las 4 tarjetas de proceso, una a una ---
+      .to({}, { duration: 0 }, 40);
+
+    procs.forEach((el, i) => {
+      const start = 40 + i * 5;
+      tl.to(links[i], { strokeDashoffset: 0, duration: 12 }, start)
+        .to(el, { x: 0, y: 0, scale: 1.06, opacity: 1, duration: 9 }, start)
+        .to(el, { scale: 1, duration: 4 }, start + 9);
+    });
+
+    // --- 68 -> 76: las tarjetas vuelven hacia el nucleo y se retraen ---
+    procs.forEach((el, i) => {
+      const start = 68 + i * 2;
+      tl.to(el, { x: procOffsets[i].x * .5, y: procOffsets[i].y * .5, scale: .3, opacity: 0, duration: 8 }, start);
+      tl.to(links[i], { strokeDashoffset: linkLengths[i], duration: 8 }, start);
+    });
+    tl.to(chip, { scale: .85, duration: 6 }, 74)
+      // --- 76 -> 84: la IA envia la respuesta ---
+      .set(envelope, { opacity: 1, top: "50%", scale: .7 }, 76)
+      .to(envelope, { top: "84%", scale: 1.15, duration: 8 }, 76)
+      .to(envelope, { opacity: 0, scale: .6, duration: 4 }, 82)
+      .to(chip, { opacity: 0, scale: .6, duration: 6 }, 78)
+      // --- 78 -> 100: la respuesta llega ---
+      .to(emailOut, { opacity: 1, y: 0, scale: 1, rotateX: -5, duration: 14 }, 78)
+      .to(badgeDone, { opacity: 1, y: 0, duration: 8 }, 84)
+      .to(notif, { opacity: 1, scale: 1, duration: 6 }, 90)
       .to({}, { duration: 0 }, 100); // fija la duración total del timeline en 100
 
     onProgress(0);
+
+    // Paralaje muy sutil con el ratón (solo desktop con puntero fino), aditivo
+    // sobre las transformaciones del scroll: rota el contenedor de la escena,
+    // no las tarjetas individuales, para no pelearse con el timeline.
+    if (matchMedia("(pointer: fine)").matches) {
+      let raf = null;
+      pinEl.addEventListener("mousemove", (e) => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = null;
+          const r = scene.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - .5;
+          const py = (e.clientY - r.top) / r.height - .5;
+          gsap.to(scene, { rotateY: px * 4, rotateX: py * -2, duration: .6, ease: "power2.out", overwrite: "auto" });
+        });
+      });
+      pinEl.addEventListener("mouseleave", () => {
+        gsap.to(scene, { rotateY: 0, rotateX: 0, duration: .6, ease: "power2.out", overwrite: "auto" });
+      });
+    }
   }
 
   function boot() {

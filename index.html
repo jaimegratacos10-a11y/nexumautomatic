@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap">
 
-<link rel="stylesheet" href="styles.css?v=20260905a">
+<link rel="stylesheet" href="styles.css?v=20260905b">
 <noscript><style>
   [data-reveal]{opacity:1!important;transform:none!important;}
   .faq-a{grid-template-rows:1fr!important;opacity:1!important;}
@@ -25,7 +25,7 @@
   <div class="nav-inner">
     <a class="brand" href="#top">
       <span class="brand-mark">N</span>
-      <span>NEXUM AUTOMATIC</span>
+      <span class="brand-text"><span class="brand-line1">NEXUM</span><span class="brand-line2">AUTOMATIC</span></span>
     </a>
     <div class="nav-links" data-nav-links>
       <a class="nav-link" href="#servicios">Servicios</a>
@@ -214,23 +214,32 @@
           <span class="hw-envelope" data-hw-envelope aria-hidden="true">✉</span>
           <span class="hw-badge hw-badge-client" data-hw-badge-client><span class="hw-badge-icon"><img src="assets/img/hw-badge-cliente.webp" alt="" width="30" height="30"></span>Cliente</span>
 
-          <div class="hw-card hw-ai" data-hw-ai>
-            <div class="hw-ai-head"><span class="hw-ai-tag">02</span>IA Nexumautomatic</div>
-            <div class="hw-ai-body">
-              <div class="hw-ai-core" data-hw-core>
-                <span class="hw-ai-ring"></span>
-                <span class="hw-ai-ring hw-ai-ring-2"></span>
-                <span class="hw-ai-mark">N</span>
-              </div>
-              <ul class="hw-ai-checklist" data-hw-checklist>
-                <li data-hw-check>Entiende la consulta</li>
-                <li data-hw-check>Extrae información clave</li>
-                <li data-hw-check>Consulta disponibilidad</li>
-                <li data-hw-check>Prepara la respuesta</li>
-                <li data-hw-check>Actualiza el CRM</li>
-                <li data-hw-check>Programa seguimiento</li>
-              </ul>
-            </div>
+          <svg class="hw-links" data-hw-links viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="hw-link" data-hw-link="agenda" d="M50,50 L13,50"></path>
+            <path class="hw-link" data-hw-link="responde" d="M50,50 L50,10"></path>
+            <path class="hw-link" data-hw-link="crm" d="M50,50 L87,50"></path>
+            <path class="hw-link" data-hw-link="automatiza" d="M50,50 L50,90"></path>
+          </svg>
+          <div class="hw-chip" data-hw-chip><span class="hw-chip-tag">02</span><span class="hw-chip-label">IA</span></div>
+          <div class="hw-proc hw-proc-agenda" data-hw-proc>
+            <span class="hw-proc-icon" aria-hidden="true">▦</span>
+            <strong>Agenda</strong>
+            <p>Gestiona citas automáticamente</p>
+          </div>
+          <div class="hw-proc hw-proc-responde" data-hw-proc>
+            <span class="hw-proc-icon" aria-hidden="true">✉</span>
+            <strong>Responde</strong>
+            <p>Redacta y envía respuestas personalizadas</p>
+          </div>
+          <div class="hw-proc hw-proc-crm" data-hw-proc>
+            <span class="hw-proc-icon" aria-hidden="true">▥</span>
+            <strong>CRM</strong>
+            <p>Consulta y actualiza tus datos</p>
+          </div>
+          <div class="hw-proc hw-proc-automatiza" data-hw-proc>
+            <span class="hw-proc-icon" aria-hidden="true">⚙</span>
+            <strong>Automatiza</strong>
+            <p>Ejecuta tareas en segundo plano</p>
           </div>
 
           <div class="hw-card hw-email hw-email-out" data-hw-email-out>
@@ -652,7 +661,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-col">
-        <div class="brand"><span class="brand-mark">N</span><span>NEXUM AUTOMATIC</span></div>
+        <div class="brand"><span class="brand-mark">N</span><span class="brand-text"><span class="brand-line1">NEXUM</span><span class="brand-line2">AUTOMATIC</span></span></div>
         <p class="footer-brand-tagline">Automatización empresarial con Inteligencia Artificial.</p>
       </div>
       <div class="footer-col">
@@ -685,6 +694,6 @@
 <script defer src="lib/gsap.min.js"></script>
 <script defer src="lib/ScrollTrigger.min.js"></script>
 <script defer src="lib/manifest.js"></script>
-<script defer src="main.js?v=20260904b"></script>
+<script defer src="main.js?v=20260905b"></script>
 </body>
 </html>
