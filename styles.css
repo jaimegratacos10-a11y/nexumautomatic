@@ -347,7 +347,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.025em
 
 .hw-envelope2 {
   place-items: center; width: 46px; height: 46px; border-radius: 14px; background: var(--ink); color: #fff;
-  box-shadow: 0 16px 30px -14px rgba(0,0,0,.45); position: relative;
+  box-shadow: 0 16px 30px -14px rgba(0,0,0,.45); position: relative; z-index: 5;
 }
 .hw-envelope2 svg { width: 20px; height: 20px; }
 .hw-envelope2-dot {
@@ -371,10 +371,10 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.025em
 }
 
 .hw-plane {
-  width: 190px; padding: .55rem 1rem; border-radius: 10px; font-family: var(--mono); font-size: .66rem;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft);
-  background: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.8);
-  backdrop-filter: blur(6px); box-shadow: 0 18px 30px -20px rgba(0,0,0,.25);
+  width: 190px; padding: .6rem 1rem; border-radius: 10px; font-family: var(--mono); font-size: .66rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700;
+  background: rgba(255,255,255,.82); border: 1px solid rgba(255,255,255,.95);
+  backdrop-filter: blur(10px); box-shadow: 0 2px 3px rgba(0,0,0,.05), 0 26px 40px -16px rgba(0,0,0,.35);
 }
 
 .hw-analyzing {
@@ -384,9 +384,9 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.025em
 .hw-analyzing i { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); flex-shrink: 0; }
 
 .hw-tool {
-  position: relative; width: 196px; padding: 1rem 1.1rem; background: rgba(255,255,255,.55);
-  border: 1px solid rgba(255,255,255,.8); border-radius: 14px; backdrop-filter: blur(6px);
-  box-shadow: 0 26px 44px -24px rgba(0,0,0,.3); align-items: flex-start; gap: .7rem;
+  position: relative; width: 196px; padding: 1rem 1.1rem; background: rgba(255,255,255,.85);
+  border: 1px solid rgba(255,255,255,.95); border-radius: 14px; backdrop-filter: blur(10px);
+  box-shadow: 0 2px 3px rgba(0,0,0,.05), 0 30px 50px -18px rgba(0,0,0,.4); align-items: flex-start; gap: .7rem;
 }
 .hw-tool-icon { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: var(--bg-2); font-size: .95rem; flex-shrink: 0; }
 .hw-tool-text strong { display: block; font-size: .84rem; margin-bottom: .1rem; }
@@ -394,6 +394,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.025em
 .hw-tool-done {
   position: absolute; bottom: -10px; right: 14px; font-size: .62rem; font-weight: 700; color: #16a34a;
   background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: .2rem .55rem;
+  box-shadow: 0 4px 10px -4px rgba(0,0,0,.25);
 }
 
 .hw-actions-done { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; color: var(--mute); white-space: nowrap; }
@@ -418,7 +419,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.025em
     position: absolute; will-change: transform, opacity;
   }
   .hw-cable { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-  .hw-cable-path { fill: none; stroke: var(--line-2); stroke-width: .45; vector-effect: non-scaling-stroke; }
+  .hw-cable-path { fill: none; stroke: var(--ink); stroke-opacity: .8; stroke-width: 2; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 
   .hw-glass { inset: 0; margin: auto; height: fit-content; opacity: 0; transform-style: preserve-3d; }
   .hw-glass[data-hw-msg] { opacity: 1; }

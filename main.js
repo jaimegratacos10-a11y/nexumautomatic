@@ -382,20 +382,19 @@
     gsap.set(analyzing, { opacity: 0 });
     gsap.set(actionsDone, { opacity: 0 });
     gsap.set(client, { opacity: 0, scale: .8 });
-    gsap.set(envelope, { opacity: 0 });
 
-    // El sobre viaja por checkpoints reales de la escena (posiciones en % del
-    // contenedor): junto al botón "Enviar" -> el mini-mensaje -> el nucleo IA
-    // -> junto al cliente. El cable (SVG) es solo el trazo visual de fondo;
-    // el sobre en si se mueve con top/left, no con offset-path, para no
-    // depender de un plugin extra de GSAP.
+    // El sobre es un unico elemento visible durante TODA la secuencia (nunca
+    // desaparece): viaja por checkpoints reales de la escena (top/left, no
+    // offset-path, para no depender de un plugin extra de GSAP) junto al
+    // botón "Enviar" -> el mini-mensaje -> encima del nucleo IA -> junto al
+    // cliente. El cable (SVG) es solo el trazo visual de fondo.
     const envelopePath = [
       { top: "74%", left: "63%" }, // junto al botón Enviar (escena 1)
       { top: "18%", left: "50%" }, // hacia el mini-mensaje (transición 1->2)
-      { top: "50%", left: "50%" }, // sobre el nucleo IA (escena 2-3)
+      { top: "38%", left: "50%" }, // justo encima del nucleo IA -- no centrado del todo para no taparse (escena 2-3)
       { top: "88%", left: "94%" }, // junto al cliente (escena 4)
     ];
-    gsap.set(envelope, { top: envelopePath[0].top, left: envelopePath[0].left, xPercent: -50, yPercent: -50, scale: .8 });
+    gsap.set(envelope, { top: envelopePath[0].top, left: envelopePath[0].left, xPercent: -50, yPercent: -50, scale: .8, opacity: 1 });
 
     // Las tarjetas de herramientas "nacen" del nucleo IA: medimos su posición
     // final ya maquetada por CSS y las colocamos encima del nucleo con un
@@ -442,7 +441,6 @@
     tl.to(cablePath, { strokeDashoffset: 0, duration: 22 }, 0)
       .to(client, { opacity: 1, scale: 1, duration: 8 }, 4)
       // --- 16 -> 30: se "pulsa" enviar y el sobre sale hacia el mini-mensaje ---
-      .to(envelope, { opacity: 1, duration: 4 }, 16)
       .to(msg, { y: -50, scale: .72, opacity: 0, rotateX: 14, duration: 12 }, 18)
       .to(envelope, { top: envelopePath[1].top, left: envelopePath[1].left, scale: .85, duration: 14 }, 18)
       .to(mini, { opacity: 1, y: 0, duration: 8 }, 26)
