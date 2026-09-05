@@ -359,52 +359,70 @@
     const gsap = window.gsap;
     gsap.registerPlugin(window.ScrollTrigger);
 
-    const emailIn = $("[data-hw-email-in]", scene);
+    const msg = $("[data-hw-msg]", scene);
     const sendBtn = $("[data-hw-send-btn]", scene);
-    const envelope = $("[data-hw-envelope]", scene);
-    const badgeClient = $("[data-hw-badge-client]", scene);
-    const chip = $("[data-hw-chip]", scene);
-    const procs = $$("[data-hw-proc]", scene);
-    const links = $$("[data-hw-link]", scene);
-    const emailOut = $("[data-hw-email-out]", scene);
-    const badgeDone = $("[data-hw-badge-done]", scene);
-    const notif = $("[data-hw-notif]", scene);
+    const mini = $("[data-hw-mini]", scene);
+    const core = $("[data-hw-core]", scene);
+    const planes = $$("[data-hw-plane]", scene);
+    const analyzing = $("[data-hw-analyzing]", scene);
+    const tools = $$("[data-hw-tool]", scene);
+    const actionsDone = $("[data-hw-actions-done]", scene);
+    const reply = $("[data-hw-reply]", scene);
+    const sentBadge = $("[data-hw-sent]", scene);
+    const envelope = $("[data-hw-envelope2]", scene);
+    const envelopeDot = $("[data-hw-envelope-dot]", scene);
+    const client = $("[data-hw-client]", scene);
+    const cablePath = $("[data-hw-cable-path]", scene);
 
-    gsap.set(emailIn, { rotateX: 7, rotateY: -6, transformPerspective: 1400 });
-    gsap.set(emailOut, { y: 80, scale: .86, rotateX: 10, transformPerspective: 1400 });
-    gsap.set(badgeDone, { y: 26, opacity: 0 });
-    gsap.set(notif, { scale: .4, opacity: 0 });
-    gsap.set(envelope, { opacity: 0, xPercent: -50, yPercent: -50, scale: .7 });
-    gsap.set(chip, { opacity: 0, scale: .6 });
+    gsap.set(msg, { rotateX: 6, rotateY: -5, transformPerspective: 1400 });
+    gsap.set(reply, { y: 30, scale: .88, rotateX: 8, transformPerspective: 1400 });
+    gsap.set(mini, { opacity: 0, y: -14 });
+    gsap.set(core, { opacity: 0, scale: .55 });
+    gsap.set(planes, { opacity: 0, scale: .92 });
+    gsap.set(analyzing, { opacity: 0 });
+    gsap.set(actionsDone, { opacity: 0 });
+    gsap.set(client, { opacity: 0, scale: .8 });
+    gsap.set(envelope, { opacity: 0 });
 
-    // Las 4 tarjetas de proceso "nacen" del chip: medimos su posición final ya
-    // maquetada por CSS y las colocamos encima del chip con un offset inverso,
-    // para poder animarlas de vuelta a x:0,y:0 (su sitio real) con scroll.
-    const chipRect = chip.getBoundingClientRect();
-    const chipCenter = { x: chipRect.left + chipRect.width / 2, y: chipRect.top + chipRect.height / 2 };
-    const procOffsets = procs.map((el) => {
+    // El sobre viaja por checkpoints reales de la escena (posiciones en % del
+    // contenedor): junto al botón "Enviar" -> el mini-mensaje -> el nucleo IA
+    // -> junto al cliente. El cable (SVG) es solo el trazo visual de fondo;
+    // el sobre en si se mueve con top/left, no con offset-path, para no
+    // depender de un plugin extra de GSAP.
+    const envelopePath = [
+      { top: "74%", left: "63%" }, // junto al botón Enviar (escena 1)
+      { top: "18%", left: "50%" }, // hacia el mini-mensaje (transición 1->2)
+      { top: "50%", left: "50%" }, // sobre el nucleo IA (escena 2-3)
+      { top: "88%", left: "94%" }, // junto al cliente (escena 4)
+    ];
+    gsap.set(envelope, { top: envelopePath[0].top, left: envelopePath[0].left, xPercent: -50, yPercent: -50, scale: .8 });
+
+    // Las tarjetas de herramientas "nacen" del nucleo IA: medimos su posición
+    // final ya maquetada por CSS y las colocamos encima del nucleo con un
+    // offset inverso, para poder animarlas de vuelta a x:0,y:0 con scroll.
+    const coreRect = core.getBoundingClientRect();
+    const coreCenter = { x: coreRect.left + coreRect.width / 2, y: coreRect.top + coreRect.height / 2 };
+    const toolOffsets = tools.map((el) => {
       const r = el.getBoundingClientRect();
-      const center = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-      return { x: chipCenter.x - center.x, y: chipCenter.y - center.y };
+      const c = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+      return { x: coreCenter.x - c.x, y: coreCenter.y - c.y };
     });
-    procs.forEach((el, i) => {
-      gsap.set(el, { x: procOffsets[i].x, y: procOffsets[i].y, scale: .2, opacity: 0 });
+    tools.forEach((el, i) => {
+      gsap.set(el, { x: toolOffsets[i].x, y: toolOffsets[i].y, scale: .2, opacity: 0 });
     });
 
-    const linkLengths = links.map((path) => {
-      const len = path.getTotalLength();
-      path.style.strokeDasharray = len;
-      path.style.strokeDashoffset = len;
-      return len;
-    });
+    const cableLen = cablePath.getTotalLength();
+    cablePath.style.strokeDasharray = cableLen;
+    cablePath.style.strokeDashoffset = cableLen;
 
     // Progreso 0-100 (aprox. % de scroll dentro de la sección — ver el "call"
     // final que fuerza la duración total del timeline a exactamente 100).
     function onProgress(p) {
       const t = p * 100;
-      setActiveStep(p < 0.32 ? 0 : p < 0.72 ? 1 : 2);
+      setActiveStep(t < 25 ? 0 : t < 75 ? 1 : 2);
       if (lineFill) lineFill.style.transform = "scaleY(" + p + ")";
-      if (sendBtn) sendBtn.classList.toggle("is-sent", t >= 14 && t < 22);
+      if (sendBtn) sendBtn.classList.toggle("is-sent", t >= 16 && t < 24);
+      if (envelopeDot) envelopeDot.classList.toggle("is-done", t >= 97);
     }
 
     const tl = gsap.timeline({
@@ -420,41 +438,56 @@
       },
     });
 
-    // --- 15 -> 30: el mensaje sale del dispositivo y viaja hacia la IA ---
-    tl.set(envelope, { opacity: 1, top: "18%", scale: .7 }, 15)
-      .to(envelope, { top: "50%", scale: 1.15, duration: 15 }, 15)
-      .to(emailIn, { y: -90, scale: .82, opacity: 0, rotateX: 16, duration: 15 }, 15)
-      .to(badgeClient, { opacity: 0, y: -26, duration: 8 }, 15)
-      .to(envelope, { opacity: 0, scale: .6, duration: 5 }, 30)
-      // --- 34 -> 40: el nucleo IA se activa ---
-      .to(chip, { opacity: 1, scale: 1.08, duration: 4 }, 34)
-      .to(chip, { scale: 1, duration: 4 }, 38)
-      // --- 40 -> 62: de el nacen las 4 tarjetas de proceso, una a una ---
-      .to({}, { duration: 0 }, 40);
+    // --- 0 -> 20: escena 1 sostenida; se dibuja el cable y aparece el cliente ---
+    tl.to(cablePath, { strokeDashoffset: 0, duration: 22 }, 0)
+      .to(client, { opacity: 1, scale: 1, duration: 8 }, 4)
+      // --- 16 -> 30: se "pulsa" enviar y el sobre sale hacia el mini-mensaje ---
+      .to(envelope, { opacity: 1, duration: 4 }, 16)
+      .to(msg, { y: -50, scale: .72, opacity: 0, rotateX: 14, duration: 12 }, 18)
+      .to(envelope, { top: envelopePath[1].top, left: envelopePath[1].left, scale: .85, duration: 14 }, 18)
+      .to(mini, { opacity: 1, y: 0, duration: 8 }, 26)
+      // --- 30 -> 42: el sobre baja hasta el nucleo IA, que se activa ---
+      .to(envelope, { top: envelopePath[2].top, left: envelopePath[2].left, scale: .75, duration: 12 }, 32)
+      .to(mini, { opacity: 0, y: -10, duration: 6 }, 36)
+      .to(core, { opacity: 1, scale: 1.08, duration: 6 }, 34)
+      .to(core, { scale: 1, duration: 4 }, 40)
+      // --- 42 -> 64: 3 planos de analisis, con parallax y desfase ---
+      .to(analyzing, { opacity: 1, duration: 4 }, 44);
 
-    procs.forEach((el, i) => {
-      const start = 40 + i * 5;
-      tl.to(links[i], { strokeDashoffset: 0, duration: 12 }, start)
-        .to(el, { x: 0, y: 0, scale: 1.06, opacity: 1, duration: 9 }, start)
-        .to(el, { scale: 1, duration: 4 }, start + 9);
+    planes.forEach((el, i) => {
+      const start = 44 + i * 5;
+      tl.to(el, { opacity: 1, scale: 1, duration: 8 }, start)
+        .to(el, { y: "-=6", duration: 20 - i * 4 }, start); // parallax: cada plano deriva a su propio ritmo
     });
 
-    // --- 68 -> 76: las tarjetas vuelven hacia el nucleo y se retraen ---
-    procs.forEach((el, i) => {
-      const start = 68 + i * 2;
-      tl.to(el, { x: procOffsets[i].x * .5, y: procOffsets[i].y * .5, scale: .3, opacity: 0, duration: 8 }, start);
-      tl.to(links[i], { strokeDashoffset: linkLengths[i], duration: 8 }, start);
+    tl.to(analyzing, { opacity: 0, duration: 4 }, 62)
+      .to(planes, { opacity: 0, scale: .9, duration: 6, stagger: 2 }, 62)
+      // --- 64 -> 86: las 3 tarjetas de herramientas nacen del nucleo, una a una ---
+      .to({}, { duration: 0 }, 64);
+
+    tools.forEach((el, i) => {
+      const start = 64 + i * 7;
+      const done = el.querySelector(".hw-tool-done");
+      tl.to(el, { x: 0, y: 0, scale: 1.05, opacity: 1, duration: 9 }, start)
+        .to(el, { scale: 1, duration: 3 }, start + 9);
+      if (done) tl.fromTo(done, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 3 }, start + 10);
     });
-    tl.to(chip, { scale: .85, duration: 6 }, 74)
-      // --- 76 -> 84: la IA envia la respuesta ---
-      .set(envelope, { opacity: 1, top: "50%", scale: .7 }, 76)
-      .to(envelope, { top: "84%", scale: 1.15, duration: 8 }, 76)
-      .to(envelope, { opacity: 0, scale: .6, duration: 4 }, 82)
-      .to(chip, { opacity: 0, scale: .6, duration: 6 }, 78)
-      // --- 78 -> 100: la respuesta llega ---
-      .to(emailOut, { opacity: 1, y: 0, scale: 1, rotateX: -5, duration: 14 }, 78)
-      .to(badgeDone, { opacity: 1, y: 0, duration: 8 }, 84)
-      .to(notif, { opacity: 1, scale: 1, duration: 6 }, 90)
+    tl.to(actionsDone, { opacity: 1, duration: 4 }, 84)
+      // --- 86 -> 94: las herramientas se pliegan hacia el nucleo ---
+      .to(actionsDone, { opacity: 0, duration: 3 }, 88);
+
+    tools.forEach((el, i) => {
+      const start = 86 + i * 2;
+      tl.to(el, { x: toolOffsets[i].x * .5, y: toolOffsets[i].y * .5, scale: .3, opacity: 0, duration: 6 }, start);
+    });
+
+    tl.to(core, { scale: .82, opacity: 0, duration: 6 }, 90)
+      // --- 90 -> 100: el sobre llega al cliente y aparece la respuesta ---
+      .to(envelope, { top: envelopePath[3].top, left: envelopePath[3].left, scale: .8, duration: 10 }, 90)
+      .to(reply, { opacity: 1, y: 0, scale: 1, rotateX: -4, duration: 10 }, 90)
+      .to(sentBadge, { opacity: 1, duration: 4 }, 96)
+      .to(client, { scale: 1.08, duration: 2 }, 96)
+      .to(client, { scale: 1, duration: 2 }, 98)
       .to({}, { duration: 0 }, 100); // fija la duración total del timeline en 100
 
     onProgress(0);
