@@ -344,8 +344,9 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.025em
   background: #fff; border: 1px solid var(--line-2); font-size: .8rem; font-weight: 600; color: var(--ink-soft);
   box-shadow: 0 10px 24px -16px rgba(0,0,0,.25); white-space: nowrap;
 }
-.hw-badge-icon { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--bg-2); font-size: .78rem; }
-.hw-badge-done .hw-badge-icon { background: #16a34a; color: #fff; }
+.hw-badge-icon { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--bg-2); font-size: .78rem; overflow: hidden; }
+.hw-badge-icon img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.05); }
+.hw-badge-done .hw-badge-icon { box-shadow: 0 0 0 2px #16a34a; }
 .hw-envelope { place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--ink); color: #fff; font-size: 1.05rem; box-shadow: 0 12px 24px -12px rgba(0,0,0,.4); }
 .hw-notif {
   align-items: center; gap: .3rem; width: 46px; height: 46px; border-radius: 14px;
@@ -402,7 +403,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.025em
   .hw-badge-done { position: absolute; bottom: 6%; right: -6%; }
   .hw-notif { position: absolute; top: 4%; left: -8%; opacity: 0; }
   .hw-badge { font-size: .9rem; padding: .65rem 1.1rem; }
-  .hw-badge-icon { width: 24px; height: 24px; }
+  .hw-badge-icon { width: 30px; height: 30px; }
   .hw-notif { width: 54px; height: 54px; font-size: 1.3rem; }
 }
 
