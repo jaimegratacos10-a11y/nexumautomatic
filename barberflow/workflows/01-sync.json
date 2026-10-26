@@ -1,0 +1,266 @@
+{
+  "name": "BARBERFLOW 01-sync",
+  "nodes": [
+    {
+      "id": "Schedule",
+      "name": "Schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Calendar events",
+      "name": "Calendar events",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "REPLACE_CALENDAR_ID",
+          "mode": "id"
+        },
+        "returnAll": true,
+        "options": {
+          "showDeleted": true
+        }
+      }
+    },
+    {
+      "id": "Normalize",
+      "name": "Normalize",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const out=[];\nfor(const {json:e} of $input.all()) {\n if(!e.id || e.recurringEventId || e.recurrence) continue;\n const guest=(e.attendees||[]).find(a=>!a.self&&!a.organizer&&a.responseStatus!=='declined');\n if(e.status!=='cancelled' && (!guest || !e.start?.dateTime)) continue;\n const calendar_id='REPLACE_CALENDAR_ID';\n out.push({json:{booking_key:calendar_id+'|'+e.id,calendar_id,event_id:e.id,service:e.summary||'',start:e.start?.dateTime||'',end:e.end?.dateTime||'',name:guest?.displayName||'',email:guest?.email||'',status:e.status||'confirmed',updated:e.updated||''}});\n} return out;"
+      }
+    },
+    {
+      "id": "Upsert bookings",
+      "name": "Upsert bookings",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        720,
+        0
+      ],
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_SPREADSHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Bookings",
+          "mode": "name"
+        },
+        "options": {},
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "booking_key": "={{ $json.booking_key }}",
+            "calendar_id": "={{ $json.calendar_id }}",
+            "event_id": "={{ $json.event_id }}",
+            "service": "={{ $json.service }}",
+            "start": "={{ $json.start }}",
+            "end": "={{ $json.end }}",
+            "name": "={{ $json.name }}",
+            "email": "={{ $json.email }}",
+            "status": "={{ $json.status }}",
+            "updated": "={{ $json.updated }}"
+          },
+          "matchingColumns": [
+            "booking_key"
+          ],
+          "schema": [
+            {
+              "id": "booking_key",
+              "displayName": "booking_key",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "calendar_id",
+              "displayName": "calendar_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "event_id",
+              "displayName": "event_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "service",
+              "displayName": "service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "start",
+              "displayName": "start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "end",
+              "displayName": "end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated",
+              "displayName": "updated",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reminder_key",
+              "displayName": "reminder_key",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reminder_state",
+              "displayName": "reminder_state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sent_at",
+              "displayName": "sent_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule": {
+      "main": [
+        [
+          {
+            "node": "Calendar events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar events": {
+      "main": [
+        [
+          {
+            "node": "Normalize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize": {
+      "main": [
+        [
+          {
+            "node": "Upsert bookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none"
+  },
+  "pinData": {}
+}
