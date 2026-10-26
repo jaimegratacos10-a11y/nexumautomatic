@@ -1,0 +1,82 @@
+{
+  "name": "BARBERFLOW 03-errors",
+  "nodes": [
+    {
+      "id": "Workflow error",
+      "name": "Workflow error",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "Safe error message",
+      "name": "Safe error message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{message:'BARBERFLOW: ha fallado una ejecución. Revisar n8n y las filas sending antes de reintentar. Workflow: '+($json.workflow?.name||'desconocido')+'. No reenviar automáticamente.'}}];"
+      }
+    },
+    {
+      "id": "Notify operator",
+      "name": "Notify operator",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "REPLACE_OPERATOR_EMAIL",
+        "subject": "BARBERFLOW — revisar incidencia",
+        "emailType": "text",
+        "message": "={{ $json.message }}",
+        "options": {
+          "appendAttribution": false
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Workflow error": {
+      "main": [
+        [
+          {
+            "node": "Safe error message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Safe error message": {
+      "main": [
+        [
+          {
+            "node": "Notify operator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none"
+  },
+  "pinData": {}
+}
